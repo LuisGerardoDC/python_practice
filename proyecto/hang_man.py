@@ -59,9 +59,10 @@ def play(chosen_word,meaning):
     chanses=6
     result = ['_' for letter in chosen_word]
     result[0] = word_list[0]
-
-    while(chanses > attempts and asserts<len_word):
+    won= False
+    while(chanses > attempts and not won):
         try:
+            print(chosen_word)
             print(TITLE)
             print(f'intentos Restantes: {chanses-attempts}')
             print(HANG_MAN[attempts])
@@ -72,7 +73,7 @@ def play(chosen_word,meaning):
             temporal = compare_attempt(letter, word_list)
             if temporal:
                 result = join_results(temporal,result)
-                asserts +=1
+                won= chosen_word == ''.join(result)
             else:
                 attempts += 1
 
@@ -82,7 +83,8 @@ def play(chosen_word,meaning):
             print(ve)
 
     system('clear')
-    if(asserts == len_word):
+
+    if(won):
         print(YOU_WON)
     else:
         print(HANG_MAN[len(HANG_MAN)-1])
