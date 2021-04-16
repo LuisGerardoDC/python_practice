@@ -1,5 +1,6 @@
 from random import randint, choice
 from os import system
+from ascii_images import *
 def read_file():
     with open('../archivos/palabras.txt','r', encoding='utf-8') as f:
         return ([line.replace('\n','') for line in f])
@@ -52,6 +53,7 @@ def play(chosen_word):
     attempts = 0
     word_list = list(chosen_word)
     chanses= compute_chanses(word_list)
+    print(TITLE)
     print(f'intentos Restantes: {chanses}')
     result = ['_' for letter in chosen_word]
     print(result)
