@@ -62,7 +62,6 @@ def play(chosen_word,meaning):
     won= False
     while(chanses > attempts and not won):
         try:
-            print(chosen_word)
             print(TITLE)
             print(f'intentos Restantes: {chanses-attempts}')
             print(HANG_MAN[attempts])
