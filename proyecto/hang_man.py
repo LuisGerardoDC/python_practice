@@ -1,9 +1,18 @@
 from random import randint, choice
 from os import system
 from ascii_images import *
+
+def read_words_description():
+    with open('../archivos/words_and_meanings.txt','r', encoding='utf-8') as f:
+        return [line.strip().split('|',1) for line in f]
+
 def read_file():
     with open('../archivos/palabras.txt','r', encoding='utf-8') as f:
         return ([line.replace('\n','') for line in f])
+
+def chose_word_meanig(words):
+    word,meanig = choice(words)
+    return (word.lower(),meanig.lower())
 
 def chose_word(words):
     return choice(words).lower()
@@ -26,7 +35,7 @@ def compare_attempt(letter, word_list):
 def get_one_letter():
     letter = input(': ')
     if len(letter) > 1:
-        raise ValueError('solo una letra, cabas de perder un intento F')
+        raise ValueError('solo una letra, cabas de perder 2 intentos F')
     else:
         system('clear')
         return letter.lower()
@@ -42,7 +51,7 @@ def join_results(new_result, old_result):
             joined_result.append('_')
     return joined_result
 
-def play(chosen_word):
+def play(chosen_word,meaning):
     attempts = 0
     asserts = 1
     word_list = list(chosen_word)
@@ -56,6 +65,7 @@ def play(chosen_word):
             print(TITLE)
             print(f'intentos Restantes: {chanses-attempts}')
             print(HANG_MAN[attempts])
+            print(meaning)
             print(result)
 
             letter = get_one_letter()
@@ -67,7 +77,7 @@ def play(chosen_word):
                 attempts += 1
 
         except ValueError as ve:
-            attempts +=1
+            attempts += 2
             system('clear')
             print(ve)
 
@@ -81,11 +91,11 @@ def play(chosen_word):
     print(f'la palabra era "{chosen_word}"')
 
 def run():
-    words = read_file()
+    words = read_words_description()
     option = '1'
     while(option == '1'):
-        chosen_word = chose_word(words)
-        play(chosen_word)
+        chosen_word,meaning = chose_word_meanig(words)
+        play(chosen_word,meaning)
         option= input('''
         Jugar de nuevo? 1.-Si 0.-No
         ''')
