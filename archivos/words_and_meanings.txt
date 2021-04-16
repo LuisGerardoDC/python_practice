@@ -60,7 +60,7 @@ detachment|(n) lack of emotion or of personal interest
 egotistical|(adj) excessively conceited or absorbed in oneself; self-centered 
 philanthropic|(adj) seeking to promote the welfare of others
 reconcile|(v) restore friendly relations between; make (one account) consistent with another
-fgurative|(adj) departing from a literal use of words; metaphorical
+figurative|(adj) departing from a literal use of words; metaphorical
 inconsequential|(adj) not important or signifcant
 reciprocity|(n) the practice of exchanging things with others for mutual beneft
 extravagant|(adj) lacking restraint in spending money or using resources
